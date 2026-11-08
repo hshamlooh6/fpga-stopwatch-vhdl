@@ -1,0 +1,18 @@
+name: Simulation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  testbenches:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install GHDL
+        run: sudo apt-get update && sudo apt-get install -y ghdl
+
+      - name: Run testbenches
+        run: make test
